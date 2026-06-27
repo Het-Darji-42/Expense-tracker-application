@@ -46,7 +46,7 @@ const Login = async (req, res) => {
     });
   }
 
-  const decryptPass = await bcrypt.compare( password, isUserExist.password);
+  const decryptPass = await bcrypt.compare(password, isUserExist.password);
   if (!decryptPass) {
     return res.status(404).json({
       success: false,
@@ -80,4 +80,29 @@ const Login = async (req, res) => {
   }
 };
 
-module.exports = { Login, Register };
+const UserProfile = async (req, res) => {
+  try {
+    const userIdJwt = req.user.userId; // Jwt token: { userId : isUserExist._id } , JWT_SECRET , { expiresIn : '2d'}
+
+    const user = await userModel.findById(userIdJwt).select("-password"); //hide pass
+    if (!user) {
+      return res.status(404).json({
+        message: "USer not found",
+        success: false,
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "User Detaild fatched",
+      user,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Server side error ",
+      success: false,
+    });
+  }
+};
+
+module.exports = { Login, Register, UserProfile };
