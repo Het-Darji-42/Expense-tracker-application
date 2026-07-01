@@ -1,7 +1,7 @@
 import { Percent, PiggyBank, Receipt, Wallet } from "lucide-react";
 import DashboardLayout from "../Component/DashboardLayout";
 import StatCard from "../Component/StatCard";
-import RecentTransactions from "../Component/RecentTransactions";
+// import RecentTransactions from "../Component/RecentTransactions";
 import CategoryBreakdown from "../Component/CategoryBreakdown";
 import BarChartBox from "../Component/BarChartBox";
 import PieChartBox from "../Component/PieChartBox";
@@ -55,7 +55,6 @@ export default function DashboardPage() {
         {/* <BarChartBox /> */}
         <PieChartBox />
 
-       
         {/* <LineChartBox /> */}
       </section>
     </div>

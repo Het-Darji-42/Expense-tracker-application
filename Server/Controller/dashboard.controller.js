@@ -79,4 +79,4 @@ const getDashboardOverview = async (req, res) => {
   }
 };
 
-module.exports = getDashboardOverview
+module.exports = getDashboardOverview;
